@@ -41,7 +41,6 @@ void setup() {
  
   tft.drawRect(0, 0, W, H, TFT_WHITE);
 
-
   Snake_X[0] = W / 2 - 4;
   Snake_Y[0] = H / 2;
 
@@ -55,27 +54,27 @@ void loop() {
     Upd();
   }
   else if(!SnakeRun){
-
+    delay(100);
   }
 
 }
 
 void Upd(){
   uint16_t x = 0, y = 0; 
-  if(tft.getTouch(&x, &y)){
-    if((x < 100) && (Snake != up) && toch){
-      Snake = down;
-      toch = false;
-    }
-    if((x > 220) && (Snake != down) && toch){
+  if(tft.getTouch(&y, &x)){
+    if((x < 80) && (Snake != down) && toch){
       Snake = up;
       toch = false;
     }
-    if((y < 120) && (x > 100) && (x < 220) && (Snake != right) && toch){
+    if((x > 160) && (Snake != up) && toch){
+      Snake = down;
+      toch = false;
+    }
+    if((y < 160) && (x > 80) && (x < 160) && (Snake != right) && toch){
       Snake = left;
       toch = false;
     }
-    if((y > 120) && (x > 100) && (x < 220) && (Snake != left) && toch){
+    if((y > 160) && (x > 80) && (x < 160) && (Snake != left) && toch){
       Snake = right;
       toch = false;
     }
